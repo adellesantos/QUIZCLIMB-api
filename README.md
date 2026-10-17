@@ -60,11 +60,16 @@ Base URL: `http://localhost:3001/api/v1`
 
 ## What "completed" means in my game
 
-[One or two sentences: when does a player count as having completed a game? For example: "A player completed the game when they answered every question, even if some answers were wrong or timed out."]
+A session is finished when its status is CLOSED and ended_at is set. A player is completed when completed is true (equivalently, finished_at is set).
 
 ## Tables
 
-[List your tables, one line each, in the order of your migrations.]
+| Table | Description |
+|---|---|
+| users | Player accounts: school_id, full_name, email, role |
+| game_sessions | Game sessions with a six-digit session_code and OPEN/CLOSED status |
+| players | Seat table: one row per player per session, with nickname, score, completed, finished_at; UNIQUE(session_id, user_id) |
+| questions | Global question bank: question text, options, correct answer, points |
 
 ## Database scripts
 
