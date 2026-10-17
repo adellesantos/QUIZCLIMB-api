@@ -1,10 +1,10 @@
-# [Your Game Title] API
+# QuizClimb API
 
-Backend API for **[Your Game Title]**, a tournament game for the SorSU Bulan Campus library.
+Backend API for **QuizClimb**, a tournament game for the SorSU Bulan Campus library.
 CS 313 Software Engineering 1, A.Y. 2026-2027.
 
-- Developer: [Your full name] ([your GitHub username]), BSCS [3-1 or 3-2]
-- Group and game concept: [Group name]
+- Developer: Adelle Delos Santos (adellesantos), BSCS 3-2
+- Group and game concept: Team 4
 
 This is my own build of my group's game concept. Every commit in this repository was made by me, with Git, on my own computer or in my own Codespace.
 
@@ -43,7 +43,7 @@ npm run dev
 | PORT | 3001 | Port the API listens on (the library assigns the final port at deployment) |
 | DB_HOST | 127.0.0.1 | PostgreSQL host |
 | DB_PORT | 5432 | PostgreSQL port |
-| DB_NAME | your_game_slug | Database name: your game slug, with underscores |
+| DB_NAME | quiz_climb | Database name: your game slug, with underscores |
 | DB_USER | postgres | Database user |
 | DB_PASSWORD | (your own) | Database password. Never commit this. |
 | HUB_API_KEY | dev-hub-key | Key the Library Game Hub sends to read results. The library gives the real one at deployment. |
