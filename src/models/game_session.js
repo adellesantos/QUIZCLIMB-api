@@ -25,7 +25,27 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'OPEN',
+        defaultValue: 'LOBBY',
+      },
+      host_user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'users',
+          key: 'user_id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+      },
+      question_set_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'question_sets',
+          key: 'question_set_id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       },
     },
     {
@@ -36,6 +56,8 @@ module.exports = (sequelize, DataTypes) => {
 
   GameSession.associate = (models) => {
     GameSession.hasMany(models.Player, { foreignKey: 'session_id' });
+    GameSession.belongsTo(models.User, { foreignKey: 'host_user_id', as: 'host' });
+    GameSession.belongsTo(models.QuestionSet, { foreignKey: 'question_set_id', as: 'questionSet' });
   };
 
   return GameSession;

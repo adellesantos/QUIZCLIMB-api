@@ -1,0 +1,158 @@
+{
+  "info": {
+    "name": "QUIZCLIB Week 11 - CRUD & Validation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3001/api/v1" },
+    { "key": "hubKey", "value": "dev-hub-key" },
+    { "key": "demoUser", "value": "2099-0001" },
+    { "key": "sessionCode", "value": "" },
+    { "key": "questionSetId", "value": "" },
+    { "key": "playerId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Week 10 - Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health",
+        "header": []
+      }
+    },
+    {
+      "name": "Week 10 - Game Info",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/game-info",
+        "header": []
+      }
+    },
+    {
+      "name": "Week 10 - Results (with hub key)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/results",
+        "header": [{ "key": "X-Hub-Key", "value": "{{hubKey}}" }]
+      }
+    },
+    {
+      "name": "Module 1 - List Question Sets",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/question-sets",
+        "header": [{ "key": "X-Demo-User", "value": "{{demoUser}}" }]
+      }
+    },
+    {
+      "name": "Module 1 - Create Question Set",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/question-sets",
+        "header": [
+          { "key": "X-Demo-User", "value": "{{demoUser}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"General Knowledge Set\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Module 1 - Get Question Set by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/question-sets/{{questionSetId}}",
+        "header": [{ "key": "X-Demo-User", "value": "{{demoUser}}" }]
+      }
+    },
+    {
+      "name": "Module 1 - Update Question Set",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/question-sets/{{questionSetId}}",
+        "header": [
+          { "key": "X-Demo-User", "value": "{{demoUser}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated General Knowledge Set\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Module 1 - Delete Question Set",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/question-sets/{{questionSetId}}",
+        "header": [{ "key": "X-Demo-User", "value": "{{demoUser}}" }]
+      }
+    },
+    {
+      "name": "Module 2 - Create Session",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/sessions",
+        "header": [
+          { "key": "X-Demo-User", "value": "{{demoUser}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"question_set_id\": 1\n}" }
+      }
+    },
+    {
+      "name": "Module 2 - Get Session by Code",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/sessions/{{sessionCode}}",
+        "header": [{ "key": "X-Demo-User", "value": "{{demoUser}}" }]
+      }
+    },
+    {
+      "name": "Module 2 - Update Session Status",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/sessions/{{sessionCode}}",
+        "header": [
+          { "key": "X-Demo-User", "value": "{{demoUser}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"status\": \"RUNNING\"\n}" }
+      }
+    },
+    {
+      "name": "Module 2 - Join Session (New Player)",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/sessions/{{sessionCode}}/players",
+        "header": [
+          { "key": "X-Demo-User", "value": "2099-0002" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"nickname\": \"Brainiac\"\n}" }
+      }
+    },
+    {
+      "name": "Module 2 - Rejoin Session (Same Player)",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/sessions/{{sessionCode}}/players",
+        "header": [
+          { "key": "X-Demo-User", "value": "2099-0002" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"nickname\": \"Brainiac\"\n}" }
+      }
+    },
+    {
+      "name": "Module 2 - List Players",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/sessions/{{sessionCode}}/players",
+        "header": [{ "key": "X-Demo-User", "value": "{{demoUser}}" }]
+      }
+    }
+  ]
+}

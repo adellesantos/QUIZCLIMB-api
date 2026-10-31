@@ -16,12 +16,16 @@ module.exports = {
         started_at: new Date('2026-10-17T09:00:00Z'),
         ended_at: new Date('2026-10-17T10:30:00Z'),
         status: 'CLOSED',
+        host_user_id: 1,
+        question_set_id: 1,
       },
       {
         session_code: '789012',
         started_at: new Date('2026-10-18T14:00:00Z'),
         ended_at: null,
-        status: 'OPEN',
+        status: 'LOBBY',
+        host_user_id: 1,
+        question_set_id: 1,
       },
     ]);
   },
